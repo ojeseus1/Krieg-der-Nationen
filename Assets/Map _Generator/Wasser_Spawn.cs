@@ -16,7 +16,7 @@ public class Wasser_Spawn : MonoBehaviour {
         for (int i = 0; i < anzahl; i++)
         {
             posrand = Random.insideUnitSphere * 5;
-            Instantiate(prefabe1, spawn_posision.transform.position + posrand, prefabe1.transform.rotation);
+            Instantiate(prefabe1, spawn_posision.transform.position + posrand, Quaternion.identity);
         }
     }
 }
