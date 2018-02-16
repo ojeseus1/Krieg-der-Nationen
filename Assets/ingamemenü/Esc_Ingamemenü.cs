@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class Esc_Ingamemenü : MonoBehaviour {
 
     private bool IsPause = false;
+    private int gamemenü = 0;
+
 
 	// Use this for initialization
 	void Start () {
@@ -16,12 +18,25 @@ public class Esc_Ingamemenü : MonoBehaviour {
 	void Update () {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            SceneManager.LoadScene("Ingamemenü", LoadSceneMode.Additive);
+
+            Ingamemenü();
             ToggleTimeScale();
         }
 
 	}
-
+    void Ingamemenü()
+    {
+        if(gamemenü == 0)
+        {
+            SceneManager.LoadScene("Ingamemenü", LoadSceneMode.Additive);
+            gamemenü = 1;
+        }
+        else
+        {
+            SceneManager.UnloadSceneAsync("Ingamemenü");
+            gamemenü = 0;
+        }
+    }
     void ToggleTimeScale()
     {
         if(!IsPause)
