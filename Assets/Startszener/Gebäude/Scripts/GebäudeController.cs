@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GebäudeController : MonoBehaviour {
     public LayerMask surfaceLayer;
-    private Transform currentBilding;
+    private Transform currentBuilding;
     private Camera myCamera;
 	// Use this for initialization
 	void Start () {
@@ -13,23 +13,24 @@ public class GebäudeController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		if (currentBilding !=null)
+		if (currentBuilding !=null)
         {
             Ray ray = myCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if(Physics.Raycast(ray,out hit,Mathf.Infinity,surfaceLayer))
             {
-                currentBilding.position = hit.point;
+                currentBuilding.position = hit.point;
             }
             if (Input.GetMouseButtonDown (1))
             {
-                currentBilding = null;
+                if(currentBuilding.GetComponent<Nicht_Ineinander>().triggers.Count == 0)
+                currentBuilding = null;
             }
         }
 	}
 
     public void SetCurrentBuilding(GameObject building)
     {
-        currentBilding = ((GameObject)Instantiate(building)).transform;
+        currentBuilding = ((GameObject)Instantiate(building)).transform;
     }
 }
