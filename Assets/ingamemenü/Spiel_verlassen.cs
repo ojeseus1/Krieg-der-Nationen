@@ -10,7 +10,7 @@ public class Spiel_verlassen : MonoBehaviour {
 	void Update () {
 	    
 	}
-    public void Ingamemenü()
+    public void Spiel_Verlassen()
     {
         SceneManager.LoadScene("Startseite", LoadSceneMode.Additive);
         SceneManager.UnloadSceneAsync("Startscene");
